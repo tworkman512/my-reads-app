@@ -16,7 +16,17 @@ class BooksApp extends React.Component {
     showSearchPage: true
   }
 
+  componentDidMount() {
+    BooksAPI.getAll()
+    .then((books) => {
+      this.setState(() => ({
+        books
+      }))
+    })
+  }
+
   render() {
+    // console.log('BOOKS', BooksAPI.getAll())
     return (
       <div className="app">
         <Route path='/search' render={() => (
