@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class BookSearch extends Component {
+export default class BookSearch extends Component {
   render() {
     return (
       <div className="search-books">
@@ -13,7 +13,10 @@ class BookSearch extends Component {
             Close
           </Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author"/>
+            <input
+              type="text"
+              placeholder="Search by title or author"
+            />
           </div>
         </div>
         <div className="search-books-results">
@@ -23,5 +26,3 @@ class BookSearch extends Component {
     )
   }
 }
-
-export default BookSearch

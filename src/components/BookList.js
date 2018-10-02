@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import OpenSearch from './OpenSearch'
 
-class BookList extends Component {
+export default class BookList extends Component {
   render() {
     return (
       <div className="list-books">
@@ -164,5 +164,3 @@ class BookList extends Component {
     )
   }
 }
-
-export default BookList
