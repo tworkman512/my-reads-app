@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import OpenSearch from './OpenSearch'
 
 class BookList extends Component {
   render() {
@@ -158,9 +159,7 @@ class BookList extends Component {
             </div>
           </div>
         </div>
-        <div className="open-search">
-          <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-        </div>
+        <OpenSearch />
       </div>
     )
   }
