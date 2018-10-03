@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
-import OpenSearch from './OpenSearch'
+import OpenSearchButton from './OpenSearchButton'
 
 export default class BookList extends Component {
   static propTypes = {
@@ -31,7 +31,7 @@ export default class BookList extends Component {
             />
           </div>
         </div>
-        <OpenSearch />
+        <OpenSearchButton />
       </div>
     )
   }

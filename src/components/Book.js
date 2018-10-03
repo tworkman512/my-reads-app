@@ -9,8 +9,6 @@ export default class Book extends Component {
   //   // bookAuthor: PropTypes.string.isRequired,
   // }
 
-
-
   render() {
     // const { books } = this.props
     // console.log('LOOK HERE', books)

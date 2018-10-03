@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const OpenSearch = () => {
+const OpenSearchButton = () => {
   return (
     <div className="open-search">
       <Link
@@ -13,4 +13,4 @@ const OpenSearch = () => {
   )
 }
 
-export default OpenSearch
+export default OpenSearchButton
