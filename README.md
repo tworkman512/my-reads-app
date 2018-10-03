@@ -23,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 App Preview - while not pretty, that was not the goal of this
 ---
 
-![My Reads Image](src/project-preview.png)
+![My Reads Image](project-preview.png)
 
 
 ## Backend Server
