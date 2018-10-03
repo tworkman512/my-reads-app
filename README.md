@@ -20,10 +20,10 @@ Installs any project dependencies that are needed to run the app.
 Runs the app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-<!-- App Preview
---- -->
+App Preview - while not pretty, that was not the goal of this
+---
 
-<!-- ![My Reads Image](src/app-preview.png) -->
+![My Reads Image](src/project-preview.png)
 
 
 ## Backend Server
