@@ -2,6 +2,20 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 export default class BookSearch extends Component {
+  constructor() {
+    super()
+    this.state = {
+      bookSearch: [],
+    }
+    this.bookSearch = this.bookSearch.bind(this)
+  }
+
+  bookSearch(bookSearch) {
+    this.setState(() => ({
+      bookSearch: bookSearch.trim()
+    }))
+  }
+
   render() {
     return (
       <div className="search-books">
