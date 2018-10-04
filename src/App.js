@@ -11,6 +11,7 @@ class BooksApp extends React.Component {
     this.state = {
       books: [],
     }
+    this.bookSearchQuery = this.bookSearchQuery.bind(this)
   }
 
   componentDidMount() {
@@ -21,20 +22,23 @@ class BooksApp extends React.Component {
     })
   }
 
-  // bookSearchQuery(book) {
-  //   BooksAPI.search().then((books) => {
-  //     this.setState(() => ({
-  //       books
-  //     }))
-  //   })
-  // }
+  bookSearchQuery(book) {
+    BooksAPI.search().then((book) => {
+      this.setState((currentState) => ({
+        books: currentState.books.concat([book])
+      }))
+    })
+  }
 
   render() {
     // console.log('BOOKS', BooksAPI.getAll())
     return (
       <div className="app">
-        <Route path='/search' render={() => (
-          <BookSearch />
+        <Route path='/search' render={({ history }) => (
+          <BookSearch onBookSearch={(book) => {
+            this.bookSearchQuery(book)
+            history.push('/')
+          }}/>
           )}
         />
         <Route exact path='/' render={({ history }) => (
