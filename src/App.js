@@ -12,6 +12,7 @@ class BooksApp extends React.Component {
       books: [],
     }
     this.bookSearchQuery = this.bookSearchQuery.bind(this)
+    this.bookStatusUpdate = this.bookStatusUpdate.bind(this)
   }
 
   componentDidMount() {
@@ -22,6 +23,12 @@ class BooksApp extends React.Component {
     })
   }
 
+  bookStatusUpdate(book, shelf) {
+    BooksAPI.getAll(book, shelf).then((res) => {
+      this.getAllBooks()
+    })
+  }
+
   bookSearchQuery(book) {
     BooksAPI.search().then((book) => {
       this.setState((currentState) => ({
@@ -29,6 +36,7 @@ class BooksApp extends React.Component {
       }))
     })
   }
+
 
   render() {
     // console.log('BOOKS', BooksAPI.getAll())
@@ -42,7 +50,10 @@ class BooksApp extends React.Component {
           )}
         />
         <Route exact path='/' render={({ history }) => (
-          <BookList books={this.state.books} />
+          <BookList
+            books={this.state.books}
+            // updateBook={this.bookStatusUpdate}
+          />
           )}
         />
       </div>

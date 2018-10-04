@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 
 export default class Book extends Component {
   render() {
+    // console.log('Props', this.props)
     return (
       <div className="book-shelf-changer">
         <select>

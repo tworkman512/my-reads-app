@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Header from './Header'
 import BookShelf from './BookShelf'
 import OpenSearchButton from './OpenSearchButton'
 
@@ -9,13 +10,12 @@ export default class BookList extends Component {
   }
 
   render() {
-    const { books } = this.props
-    console.log('LOOK HERE', books)
+    const { books, bookStatusUpdate } = this.props
+    // console.log('LOOK HERE', books)
+    console.log('Props', this.props)
     return (
       <div className="list-books">
-        <div className="list-books-title">
-          <h1>MyReads</h1>
-        </div>
+        <Header />
         <div className="list-books-content">
           <div>
             <BookShelf
