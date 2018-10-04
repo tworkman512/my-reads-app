@@ -10,9 +10,9 @@ export default class BookList extends Component {
   }
 
   render() {
-    const { books, bookStatusUpdate } = this.props
+    const { books } = this.props
     // console.log('LOOK HERE', books)
-    console.log('Props', this.props)
+    // console.log('Props', this.props)
     return (
       <div className="list-books">
         <Header />

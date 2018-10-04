@@ -11,6 +11,7 @@ class BooksApp extends React.Component {
     this.state = {
       books: [],
     }
+    this.getAllBooks = this.getAllBooks.bind(this)
     this.bookSearchQuery = this.bookSearchQuery.bind(this)
     this.bookStatusUpdate = this.bookStatusUpdate.bind(this)
   }
@@ -23,11 +24,17 @@ class BooksApp extends React.Component {
     })
   }
 
-  bookStatusUpdate(book, shelf) {
-    BooksAPI.getAll(book, shelf).then((res) => {
-      this.getAllBooks()
-    })
-  }
+  // getAllBooks() {
+  //   BooksAPI.getAll().then((books) => {
+  //     this.setState({books})
+  //   })
+  // }
+  //
+  // bookStatusUpdate(book, shelf) {
+  //   BooksAPI.getAll(book, shelf).then((res) => {
+  //     this.getAllBooks()
+  //   })
+  // }
 
   bookSearchQuery(book) {
     BooksAPI.search().then((book) => {
