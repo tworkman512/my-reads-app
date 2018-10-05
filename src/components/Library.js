@@ -13,14 +13,13 @@ render() {
   return (
     <div className="search-books-results">
       <ol className="books-grid">
-        {bookResults.map((book) => (
-          <li key={book.id}>
-            <Book
-              bookImage={ book.imageLinks.smallThumbnail }
-              bookTitle={ book.title }
-              bookAuthor={ book.author }
-            />
-          </li>
+        {bookResults.map((result) => (
+          <Book
+            key={result.id}
+            bookImage={result.imageLinks.smallThumbnail}
+            bookTitle={result.title}
+            bookAuthor={result.author}
+          />
         ))}
       </ol>
     </div>
