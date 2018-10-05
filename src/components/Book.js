@@ -11,8 +11,6 @@ export default class Book extends Component {
   // }
 
   render() {
-    const { books } = this.props
-    // console.log('LOOK HERE', books)
     return (
       <div>
         <div className="book">

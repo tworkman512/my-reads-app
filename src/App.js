@@ -10,10 +10,8 @@ class BooksApp extends React.Component {
     super()
     this.state = {
       books: [],
+      bookResults: [],
     }
-    this.getAllBooks = this.getAllBooks.bind(this)
-    this.bookSearchQuery = this.bookSearchQuery.bind(this)
-    this.bookStatusUpdate = this.bookStatusUpdate.bind(this)
   }
 
   componentDidMount() {
@@ -36,29 +34,57 @@ class BooksApp extends React.Component {
   //   })
   // }
 
-  bookSearchQuery(book) {
-    BooksAPI.search().then((book) => {
-      this.setState((currentState) => ({
-        books: currentState.books.concat([book])
-      }))
+  // bookSearch = (query, maxResults) => {
+  //   // if nothing is searched then remove the book thumbnails
+  //   query.length === 0 && this.setState({bookResults: []})
+  //
+  //   query.length > 0 &&
+  // }
+
+  onBookSearch = (query, maxResults) => {
+    // if nothing is searched then remove the book thumbnails
+    query.length === 0 && this.setState({bookResults: []})
+
+    query.length > 0 && BooksAPI.search(query, maxResults).then(bookSearched => {
+      if(!bookSearched.error) {
+        bookSearched.forEach((bookSearch) => {
+          let unmatched = this.state.books.filter(book => book.id !== bookSearch.id)
+          let matched = this.state.books.filter(book => book.id === bookSearch.id)
+
+          if (matched.length > 0) {
+            return bookSearch.shelf = matched[0].shelf
+          }
+          if (unmatched.length > 0) {
+            return bookSearch.shelf = 'none'
+          }
+        })
+      }
+
+      bookSearched.error
+      || bookSearched
+      === undefined
+      ? (this.setState({ bookResults: [] }))
+      : (this.setState({ bookResults: bookSearched }))
     })
   }
 
-
   render() {
+    const { books, bookResults } = this.state
     // console.log('BOOKS', BooksAPI.getAll())
     return (
       <div className="app">
         <Route path='/search' render={({ history }) => (
-          <BookSearch onBookSearch={(book) => {
-            this.bookSearchQuery(book)
-            history.push('/')
-          }}/>
+          <BookSearch
+            onBookSearch={this.onBookSearch}
+            books={books}
+            bookResults={bookResults}
+          />
           )}
         />
         <Route exact path='/' render={({ history }) => (
           <BookList
-            books={this.state.books}
+            books={books}
+            bookResults={bookResults}
             // updateBook={this.bookStatusUpdate}
           />
           )}

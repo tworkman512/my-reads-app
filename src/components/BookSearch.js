@@ -1,22 +1,15 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import Library from './Library'
 
 export default class BookSearch extends Component {
-  constructor() {
-    super()
-    this.state = {
-      bookSearch: [],
-    }
-    this.bookSearch = this.bookSearch.bind(this)
-  }
-
-  bookSearch(bookSearch) {
-    this.setState(() => ({
-      bookSearch: bookSearch.trim()
-    }))
+  static propTypes = {
+    onBookSearch: PropTypes.func.isRequired,
   }
 
   render() {
+    const { bookResults } = this.props
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -30,12 +23,13 @@ export default class BookSearch extends Component {
             <input
               type="text"
               placeholder="Search by title or author"
+              onChange={(event) => this.props.onBookSearch(event.target.value)}
             />
           </div>
         </div>
-        <div className="search-books-results">
-          <ol className="books-grid"></ol>
-        </div>
+        <Library
+          bookResults={bookResults}
+        />
       </div>
     )
   }
