@@ -9,7 +9,7 @@ export default class BookShelf extends Component {
   }
 
   render() {
-    const { books } = this.props
+    const { books, updateBook } = this.props
     // console.log('LOOK A BOOK', books)
     return (
       <div className="bookshelf">
@@ -19,9 +19,11 @@ export default class BookShelf extends Component {
             {books.map((book) => (
               <li key={book.id}>
                 <Book
+                  book={book}
                   bookImage={ book.imageLinks.smallThumbnail }
                   bookTitle={ book.title }
                   bookAuthor={ book.author }
+                  updateBook={updateBook}
                 />
               </li>
             ))}

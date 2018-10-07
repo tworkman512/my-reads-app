@@ -22,24 +22,18 @@ class BooksApp extends React.Component {
     })
   }
 
-  // getAllBooks() {
-  //   BooksAPI.getAll().then((books) => {
-  //     this.setState({books})
-  //   })
-  // }
-  //
-  // bookStatusUpdate(book, shelf) {
-  //   BooksAPI.getAll(book, shelf).then((res) => {
-  //     this.getAllBooks()
-  //   })
-  // }
+  // Get all books for when updates are made to shelves
+  getAllBooks = () => {
+    BooksAPI.getAll().then((books) => {
+      this.setState({books})
+    })
+  }
 
-  // bookSearch = (query, maxResults) => {
-  //   // if nothing is searched then remove the book thumbnails
-  //   query.length === 0 && this.setState({bookResults: []})
-  //
-  //   query.length > 0 &&
-  // }
+  updateBook = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(res => {
+      this.getAllBooks()
+    })
+  }
 
   onBookSearch = (query, maxResults) => {
     // if nothing is searched then remove the book thumbnails
@@ -70,7 +64,7 @@ class BooksApp extends React.Component {
 
   render() {
     const { books, bookResults } = this.state
-    // console.log('BOOKS', BooksAPI.getAll())
+    // console.log('BOOKS', books)
     return (
       <div className="app">
         <Route path='/search' render={({ history }) => (
@@ -78,14 +72,14 @@ class BooksApp extends React.Component {
             onBookSearch={this.onBookSearch}
             books={books}
             bookResults={bookResults}
+            updateBook={this.updateBook}
           />
           )}
         />
         <Route exact path='/' render={({ history }) => (
           <BookList
             books={books}
-            bookResults={bookResults}
-            // updateBook={this.bookStatusUpdate}
+            updateBook={this.updateBook}
           />
           )}
         />

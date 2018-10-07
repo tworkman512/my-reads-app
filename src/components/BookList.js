@@ -10,7 +10,7 @@ export default class BookList extends Component {
   }
 
   render() {
-    const { books } = this.props
+    const { books, updateBook } = this.props
     // console.log('LOOK HERE', books)
     // console.log('Props', this.props)
     return (
@@ -21,14 +21,17 @@ export default class BookList extends Component {
             <BookShelf
               bookShelfTitle="Currently Reading"
               books={ books.filter(book => book.shelf === 'currentlyReading') }
+              updateBook={updateBook}
             />
             <BookShelf
               bookShelfTitle="Want to Read"
               books={ books.filter(book => book.shelf === 'wantToRead') }
+              updateBook={updateBook}
             />
             <BookShelf
               bookShelfTitle="Read"
               books={ books.filter(book => book.shelf === 'read') }
+              updateBook={updateBook}
             />
           </div>
         </div>

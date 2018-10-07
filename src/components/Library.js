@@ -8,18 +8,21 @@ static propTypes = {
 }
 
 render() {
-  const { bookResults } = this.props
+  const { bookResults, updateBook } = this.props
   console.log('BOOK RESULTS', bookResults)
   return (
     <div className="search-books-results">
       <ol className="books-grid">
-        {bookResults.map((result) => (
-          <Book
-            key={result.id}
-            bookImage={result.imageLinks.smallThumbnail}
-            bookTitle={result.title}
-            bookAuthor={result.author}
-          />
+        {bookResults.map((book) => (
+          <li key={book.id}>
+            <Book
+              book={book}
+              bookImage={book.imageLinks.smallThumbnail}
+              bookTitle={book.title}
+              bookAuthor={book.author}
+              updateBook={updateBook}
+            />
+          </li>
         ))}
       </ol>
     </div>

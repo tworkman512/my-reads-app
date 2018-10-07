@@ -9,7 +9,7 @@ export default class BookSearch extends Component {
   }
 
   render() {
-    const { bookResults } = this.props
+    const { onBookSearch, updateBook, bookResults } = this.props
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -23,11 +23,12 @@ export default class BookSearch extends Component {
             <input
               type="text"
               placeholder="Search by title or author"
-              onChange={(event) => this.props.onBookSearch(event.target.value)}
+              onChange={(event) => onBookSearch(event.target.value)}
             />
           </div>
         </div>
         <Library
+          updateBook={updateBook}
           bookResults={bookResults}
         />
       </div>
