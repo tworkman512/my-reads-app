@@ -5,11 +5,11 @@ import Book from './Book'
 export default class Library extends Component {
 static propTypes = {
   bookResults: PropTypes.array.isRequired,
+  updateBook: PropTypes.func.isRequired,
 }
 
 render() {
   const { bookResults, updateBook } = this.props
-  console.log('BOOK RESULTS', bookResults)
   return (
     <div className="search-books-results">
       <ol className="books-grid">

@@ -4,7 +4,6 @@ export default class Book extends Component {
 
   render() {
     const { book, updateBook, bookTitle, bookAuthor } = this.props
-    console.log('BOOK', book)
     return (
       <div>
         <div className="book">

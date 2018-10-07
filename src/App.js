@@ -53,7 +53,8 @@ class BooksApp extends React.Component {
           }
         })
       }
-
+      // don't display book results if nothing is available
+			// otherwise show book results in library
       bookSearched.error
       || bookSearched
       === undefined
@@ -64,7 +65,6 @@ class BooksApp extends React.Component {
 
   render() {
     const { books, bookResults } = this.state
-    // console.log('BOOKS', books)
     return (
       <div className="app">
         <Route path='/search' render={({ history }) => (
