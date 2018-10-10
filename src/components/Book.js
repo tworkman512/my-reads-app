@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-export default class Book extends Component {
+export default class Book extends PureComponent {
 
   render() {
     const { book, updateBook, bookTitle, bookAuthor, bookImage } = this.props
