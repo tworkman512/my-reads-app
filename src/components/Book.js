@@ -3,12 +3,20 @@ import React, { Component } from 'react'
 export default class Book extends Component {
 
   render() {
-    const { book, updateBook, bookTitle, bookAuthor } = this.props
+    const { book, updateBook, bookTitle, bookAuthor, bookImage } = this.props
     return (
       <div>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.bookImage})` }}></div>
+            <div
+              className="book-cover"
+              style={
+                bookImage === undefined
+                ? { width: 128, height: 193, backgroundImage: 'none', backgroundColor: '#F5F5F5' }
+                : { width: 128, height: 193, backgroundImage: `url(${bookImage.thumbnail})` }
+              }
+            >
+            </div>
             <div className="book-shelf-changer">
               <select defaultValue={book.shelf}
 								onChange={(event) => updateBook(book, event.target.value)}>

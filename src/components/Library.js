@@ -17,7 +17,7 @@ render() {
           <li key={book.id}>
             <Book
               book={book}
-              bookImage={book.imageLinks.smallThumbnail}
+              bookImage={book.imageLinks}
               bookTitle={book.title}
               bookAuthor={book.author}
               updateBook={updateBook}

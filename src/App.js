@@ -14,8 +14,8 @@ class BooksApp extends React.Component {
     }
   }
 
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
+  async componentDidMount() {
+    await BooksAPI.getAll().then((books) => {
       this.setState(() => ({
         books
       }))
@@ -69,10 +69,10 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route path='/search' render={({ history }) => (
           <BookSearch
-            onBookSearch={this.onBookSearch}
             books={books}
             bookResults={bookResults}
             updateBook={this.updateBook}
+            onBookSearch={this.onBookSearch}
           />
           )}
         />
